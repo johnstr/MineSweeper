@@ -1,0 +1,14 @@
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\bin\Debug\MineSweeper.exe.config
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\bin\Debug\MineSweeper.exe
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\bin\Debug\MineSweeper.pdb
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.csprojResolveAssemblyReference.cache
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MainWindow.g.cs
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\App.g.cs
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper_MarkupCompile.cache
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper_MarkupCompile.lref
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MainWindow.baml
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.g.resources
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.Properties.Resources.resources
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.csproj.GenerateResource.Cache
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.exe
+c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.pdb

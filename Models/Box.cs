@@ -1,82 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MineSweeper.Models
 {
-
-   
-
-    //enum Ico
-    //{
-    //    ZERO,
-    //    NUM1,
-    //    NUM2,
-    //    NUM3,
-    //    NUM4,
-    //    NUM5,
-    //    NUM6,
-    //    NUM7,
-    //    NUM8,
-    //    OPENED,
-    //    CLOZED,
-    //    FLAGED,
-    //    NOBOMB,
-    //    BOMB,
-    //    BOMBED
-    //};
-
-    struct Icon
+    public class Box : Image
     {
+        public const int SIZE = 50;
         public string IconName;
-        public BitmapImage BitmapIcon;
+        public int X;
+        public int Y;
 
-   
-        public Icon(string iconName, string bitmapIconPath)
+        public Box(string iconName, BitmapImage source)
         {
-            //set IconName   
-            IconName = iconName;
-            //set BitmapIcon
-            BitmapImage bitmapIcon = new BitmapImage();
-            bitmapIcon.BeginInit();
-            bitmapIcon.UriSource = new Uri(bitmapIconPath);
-            bitmapIcon.EndInit();
-            BitmapIcon = bitmapIcon;
+            this.Source = source;
+            
+            this.IconName = iconName;
+           // this.Height = this.Width = SIZE;
         }
-    }
 
-
-    class Icons
-    {
-        const string ICONS_SOURCE = @"C:\Users\tvstr\Documents\visual studio 2015\Projects\MineSweeper\MineSweeper\Resources\icons";
-
-        List<Icon> listOfIcons;
-
-        public void LoadIcons()
+        public Box(string iconName, BitmapImage source, int x, int y)
         {
-
-            string[] fileEntries = Directory.GetFiles(ICONS_SOURCE);
-            foreach (string filePath in fileEntries)
-            {
-                string iconName = Path.GetFileNameWithoutExtension(filePath).ToUpper();
-                listOfIcons.Add(new Icon(iconName, filePath));
-            }
+            this.Source = source;
+            this.X = x;
+            this.Y = y;
+            this.IconName = iconName;
+           // this.Height = this.Width = SIZE;
         }
+
+        public Box(Box box, int x, int y):this(box.IconName, (BitmapImage)box.Source, x, y) {}
+
+        public Box(Box box) : this(box.IconName, (BitmapImage)box.Source) { }
+
+        public void SetSource(BitmapImage source)
+        {
+            this.Source = source;
+        }
+
     }
-
-
-    //class Box
-    //{
-    //    public int X;
-    //    public int Y;
-    //  //  public Image Icon;
-
-
-    //}
 }

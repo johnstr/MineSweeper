@@ -19,7 +19,6 @@ namespace MineSweeper.Models
         public Box(string iconName, BitmapImage source)
         {
             this.Source = source;
-            
             this.IconName = iconName;
            // this.Height = this.Width = SIZE;
         }
@@ -37,9 +36,10 @@ namespace MineSweeper.Models
 
         public Box(Box box) : this(box.IconName, (BitmapImage)box.Source) { }
 
-        public void SetSource(BitmapImage source)
+        public void SetBox(Box box)
         {
-            this.Source = source;
+            this.Source = box.Source;
+            this.IconName = box.IconName;
         }
 
     }

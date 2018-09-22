@@ -16,7 +16,7 @@
                 <MenuItem Header="_Exit"/>
             </MenuItem>
         </Menu>
-        <Canvas x:Name="gameCanvas">
+        <Canvas x:Name="gameCanvas" MouseLeftButtonDown="gameCanvas_MouseLeftButtonDown" MouseRightButtonDown="gameCanvas_MouseRightButtonDown">
             
         </Canvas>
 

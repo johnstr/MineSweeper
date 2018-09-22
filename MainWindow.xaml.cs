@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using MineSweeper.Models;
 using System.Collections;
 
+
 namespace MineSweeper
 {
 
@@ -81,6 +82,7 @@ namespace MineSweeper
                 }
         }
 
+
         public GameMatrix()
         {
             if (GameIcons == null)
@@ -104,14 +106,78 @@ namespace MineSweeper
 
     }
 
+
+    public enum Status : int { Play, Lost, Won };
+
+    public class Game
+    {
+        public GameMatrix LowerMatrix;
+        public GameMatrix UpperMatrix;
+        public Status GameStatus;
+        private int NumOfOpenedBoxes;
+
+        private void OpenBoxesAround(Box box)
+        {
+           box.SetBox(LowerMatrix[box.Y][box.X]);
+            for (int i = box.Y - 1; i <= box.Y + 1; i++)
+                for (int j = box.X - 1; j <= box.X + 1; j++)
+                    if (i > -1 && i < UpperMatrix.Count && j > -1 && j < UpperMatrix.Count)
+                    {
+                        if (!LowerMatrix[i][j].IconName.Equals("BOMB")) OpenBox(i, j);
+                   
+                    }
+        }
+
+        public void OpenBox(int y, int x)
+        {
+            string lowerIconName = "";
+            if(UpperMatrix[y][x].IconName.Equals("CLOSED")){
+                lowerIconName = LowerMatrix[y][x].IconName;
+                NumOfOpenedBoxes--;
+                CheckIfWin();
+                if (lowerIconName.Equals("ZERO"))
+                    OpenBoxesAround(UpperMatrix[y][x]);
+                else if (LowerMatrix[y][x].IconName.Contains("NUM"))
+                    UpperMatrix[y][x].SetBox(LowerMatrix[y][x]);
+                else
+                {
+                    UpperMatrix[y][x].SetBox(GameMatrix.GameIcons["BOMBED"]);
+                    GameStatus = Status.Lost;
+                }
+            }
+        }
+
+        private void CheckIfWin()
+        {
+            if (NumOfOpenedBoxes == 0)
+                GameStatus = Status.Won;
+        }
+
+
+        public void PutTheFlag(int y, int x)
+        {
+            UpperMatrix[y][x].SetBox(GameMatrix.GameIcons["FLAGED"]);
+            NumOfOpenedBoxes--;
+            CheckIfWin();
+        }
+
+        public Game(int mx_size, int numOfBombs)
+        {
+            this.UpperMatrix = new GameMatrix(mx_size);
+            this.LowerMatrix = new GameMatrix(mx_size, numOfBombs);
+            this.GameStatus = Status.Play;
+            this.NumOfOpenedBoxes = UpperMatrix.Count * UpperMatrix.Count;
+        }
+    }
     
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public GameMatrix UnderMatrix;   
-        public const int MX_SIZE = 9;
+        public Game MsGame;  
+        public const int MX_SIZE = 3;
+        public const int NUM_BOMBS = 1;
 
         private void InitWindow()
         {
@@ -120,17 +186,18 @@ namespace MineSweeper
             this.ResizeMode = ResizeMode.NoResize;
         }
 
+
         private void FillWithBoxes()
         { 
-            for(int i = 0; i < UnderMatrix.Count; i++)
-            {
-              
-                for (int j = 0; j < UnderMatrix[i].Count; j++)
+            for(int i = 0; i < MsGame.UpperMatrix.Count; i++)
+            {  
+                for (int j = 0; j < MsGame.UpperMatrix[i].Count; j++)
                 {
-                    Box box = UnderMatrix[i][j];
+                    Box box = MsGame.UpperMatrix[i][j];
                     gameCanvas.Children.Add(box);
                     Canvas.SetLeft(box, j*Box.SIZE);
                     Canvas.SetTop(box, i*Box.SIZE);
+                    Canvas a = new Canvas();
                 }
             }
         }
@@ -138,9 +205,57 @@ namespace MineSweeper
         public MainWindow()
         {
             InitializeComponent();
-            UnderMatrix = new GameMatrix(MX_SIZE,1);
+            MsGame = new Game(MX_SIZE, NUM_BOMBS);
             FillWithBoxes();
             InitWindow();
+        }
+
+
+        private int[] getBoxCords(object sender, MouseButtonEventArgs e)
+        {
+            int[] cords = new int[2];
+            Point mouseClickPoint = e.GetPosition((IInputElement)sender);
+            cords[0] = (int)mouseClickPoint.Y / Box.SIZE;
+            cords[1] = (int)mouseClickPoint.X / Box.SIZE;
+            return cords;
+        }
+
+        private void gameCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            int[] cords = getBoxCords(sender, e);
+
+            if(MsGame.GameStatus == Status.Play)
+            {
+                MsGame.OpenBox(cords[0], cords[1]);
+                switch (MsGame.GameStatus)
+                {
+                    case Status.Won:/*write win message*/
+                        break;
+                    case Status.Lost:/*write win message*/
+                        break;
+                    default:
+                        break;
+                }
+            }   
+        }
+
+        private void gameCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            int[] cords = getBoxCords(sender, e);
+            if (MsGame.GameStatus == Status.Play)
+            {
+                MsGame.PutTheFlag(cords[0], cords[1]); 
+                switch (MsGame.GameStatus)
+                {
+                    case Status.Won:/*write win message*/
+                        break;
+                    case Status.Lost:/*write win message*/
+                        break;
+                    default:
+                        break;
+                }
+            }
+           
         }
     }
 

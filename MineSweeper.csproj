@@ -55,8 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameSettings.xaml.cs">
+      <DependentUpon>GameSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Box.cs" />
+    <Compile Include="Models\GameMatrix.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameToFile.cs" />
+    <Compile Include="Models\IconCollection.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Page Include="GameSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,7 +82,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Icons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

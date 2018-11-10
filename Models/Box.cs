@@ -9,38 +9,20 @@ using System.Windows.Media.Imaging;
 
 namespace MineSweeper.Models
 {
-    public class Box : Image
+
+    [Serializable]
+    public class Box
     {
-        public const int SIZE = 50;
-        public string IconName;
-        public int X;
-        public int Y;
+        public string IconName { get; set; }
+        public int X { get; }
+        public int Y { get; }
 
-        public Box(string iconName, BitmapImage source)
+        public Box(string iconName, int y, int x)
         {
-            this.Source = source;
-            this.IconName = iconName;
-           // this.Height = this.Width = SIZE;
+            IconName = iconName;
+            Y = y;
+            X = x;
         }
-
-        public Box(string iconName, BitmapImage source, int x, int y)
-        {
-            this.Source = source;
-            this.X = x;
-            this.Y = y;
-            this.IconName = iconName;
-           // this.Height = this.Width = SIZE;
-        }
-
-        public Box(Box box, int x, int y):this(box.IconName, (BitmapImage)box.Source, x, y) {}
-
-        public Box(Box box) : this(box.IconName, (BitmapImage)box.Source) { }
-
-        public void SetBox(Box box)
-        {
-            this.Source = box.Source;
-            this.IconName = box.IconName;
-        }
-
     }
+
 }

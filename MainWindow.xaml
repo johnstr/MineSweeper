@@ -5,16 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MineSweeper"
         mc:Ignorable="d"
-        Title="MineSweeper" Height="0" Width="0">
+        Title="MineSweeper" Height="0" Width="0" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Menu x:Name="menu" DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New"/>
-                <MenuItem Header="_Open"/>
-                <MenuItem Header="_Save"/>
+                <MenuItem x:Name="newGameButton" Header="_New Game" Click="newGameButton_Click"/>
+                <MenuItem x:Name="saveGameButton" Header="_Save Game" Click="saveGameButton_Click"/>
                 <Separator/>
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_Exit" Click="exitGameButton_Click"/>
             </MenuItem>
+            <MenuItem Header="_Options">
+                <MenuItem  x:Name="undoButton" Header="_Undo" IsEnabled="False" Click="undoButton_Click"/>
+                <MenuItem  x:Name="bombMapButton" Header="_Show BombMap"  Click="bombMapButton_Click"/>
+                <Separator/>
+                <MenuItem Header="_Game Settings" Click="gameSettingsButton_Click"/>
+            </MenuItem>
+
+
+
         </Menu>
         <Canvas x:Name="gameCanvas" MouseLeftButtonDown="gameCanvas_MouseLeftButtonDown" MouseRightButtonDown="gameCanvas_MouseRightButtonDown">
             

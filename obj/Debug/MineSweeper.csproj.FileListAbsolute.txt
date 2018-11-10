@@ -12,3 +12,5 @@ c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj
 c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.csproj.GenerateResource.Cache
 c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.exe
 c:\users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\MineSweeper.pdb
+C:\Users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\GameSettings.g.cs
+C:\Users\tvstr\documents\visual studio 2015\Projects\MineSweeper\MineSweeper\obj\Debug\GameSettings.baml

@@ -1,0 +1,30 @@
+﻿<Window x:Class="MineSweeper.GameSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MineSweeper"
+        mc:Ignorable="d"
+        Title="GameSettings" Height="150" Width="300">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label>Field size:</Label>
+        <TextBox Grid.Column="1" Margin="0,0,0,10" PreviewTextInput="NumberValidationTextBox" MaxLength="2"  Text = "{Binding FieldHeight, Mode = TwoWay}"/>
+        <Label Grid.Column="2"  Margin="0,0,0,10" >X</Label>
+        <TextBox Grid.Column="3" Margin="0,0,0,10" PreviewTextInput="NumberValidationTextBox" MaxLength="2" Text = "{Binding FieldWidth, Mode = TwoWay}"/>
+        <Label Grid.Row="1">Number of Bombs:</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" MaxLength="3"  Text = "{Binding NumOfBombs, Mode = TwoWay}"/>
+        <Button x:Name="button" Grid.Column="3" Content="Save" Margin="0,10,0,0" Grid.Row="2" Click="saveButton_Click"/>
+
+    </Grid>
+</Window>
